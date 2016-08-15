@@ -7,12 +7,16 @@ namespace hamming
 	unsigned int compute(const std::string& a, const std::string& b)
 	{
 		unsigned int hamming_distance = 0;
-		if(a.size() != b.size()) throw std::domain_error("size mismatch");
-		for(int i = 0; i < a.size(); i++)
+		std::string::const_iterator a_it, b_it;
+		// if(a.size() != b.size()) throw std::domain_error("size mismatch");
+		for(a_it = a.begin(), b_it = b.begin();
+			(a_it != a.end()) && (b_it != b.end());
+			a_it++,b_it++)
 		{
-			if(a[i] != b[i]) hamming_distance++;
+			if(*a_it != *b_it) hamming_distance++;
 		}
-		return hamming_distance;
+		if((a_it == a.end()) && (b_it == b.end())) return hamming_distance;
+		throw std::domain_error("size mismatch");
 	}
 }
 
