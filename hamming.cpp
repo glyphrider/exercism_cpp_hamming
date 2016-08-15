@@ -8,7 +8,6 @@ namespace hamming
 	{
 		unsigned int hamming_distance = 0;
 		std::string::const_iterator a_it, b_it;
-		// if(a.size() != b.size()) throw std::domain_error("size mismatch");
 		for(a_it = a.begin(), b_it = b.begin();
 			(a_it != a.end()) && (b_it != b.end());
 			a_it++,b_it++)
